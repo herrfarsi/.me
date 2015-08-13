@@ -1,0 +1,49 @@
+h1 {
+  line-height: 1;
+  font-weight: 900;
+  font-size: 4rem;
+  margin: 0 0 1rem;
+}
+h2 {
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin-bottom: 0;
+}
+p {
+  margin: 0.75rem 0;
+  color: black;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.color {
+  color: $opposite;
+}
+a {
+  background: $opposite;
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+  padding: 2px 5px;
+  margin-bottom: 2px;
+  &:hover {
+    background: $extreme;
+  }
+}
+ul {
+  @include reset-ul;
+  margin: 0.75rem 0;
+}
+@include media('lap-up'){
+  h1 {
+    font-size: 5rem;
+  }
+}
+@include media('wall-up'){
+  h1 {
+    font-size: 7rem;
+  }
+}

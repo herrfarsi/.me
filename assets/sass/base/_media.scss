@@ -1,0 +1,99 @@
+$hand-start:   480px;
+$lap-start:    768px;
+$lap-wide-start: 920px;
+$desk-start:   1024px;
+$wall-start:   1400px;
+
+// ***************************************************************************
+// Media query mixin
+//
+// All styles w/o a media-query are assumed to be base, mobile-first styles.
+// All styling "up" from that should be done in media queries.
+//
+// Our options are:
+//
+// hand-up    -  bigger-than-phone and up
+// lap-up     -  laptops and up
+// desk-up    -  desktops and up
+// wall-up    -  widescreen desktops and up
+// below-lap      -  smaller than laptops
+// below-hand     -  isolates phones
+//
+// Without one of these parameters the mixin will accept a custom media query.
+//
+// ***************************************************************************
+
+@mixin media($media-query) {
+  @if $media-query == "hand-up" {
+    @if $hand-start != false {
+      @media only screen and (min-width:$hand-start) { @content; }
+    }
+    @else { @content; }
+  }
+
+  @else if $media-query == "lap-up" {
+    @if $lap-start != false {
+      @media only screen and (min-width:$lap-start) { @content; }
+    }
+    @else { @content; }
+  }
+
+  @else if $media-query == "lap-wide-up" {
+    @if $lap-wide-start != false {
+      @media only screen and (min-width:$lap-wide-start) { @content; }
+    }
+    @else { @content; }
+  }
+
+  @else if $media-query == "desk-up" {
+    @if $desk-start != false {
+      @media only screen and (min-width:$desk-start) { @content; }
+    }
+    @else { @content; }
+  }
+
+  @else if $media-query == "wall-up" {
+    @if $wall-start != false {
+      @media only screen and (min-width:$wall-start) { @content; }
+    }
+    @else { @content; }
+  }
+
+  @else if $media-query == "below-desk" {
+    @if $desk-start != false {
+      @media only screen and (max-width: ($desk-start - 1px)) { @content; }
+    }
+    @else {}
+  }
+
+  @else if $media-query == "below-lap-wide" {
+    @if $lap-wide-start != false {
+      @media only screen and (max-width: ($lap-wide-start - 1px)) { @content; }
+    }
+    @else {}
+  }
+
+  @else if $media-query == "below-lap" {
+    @if $lap-start != false {
+      @media only screen and (max-width: ($lap-start - 1px)) { @content; }
+    }
+    @else {}
+  }
+
+  @else if $media-query == "below-hand" {
+    @if $hand-start != false {
+      @media only screen and (max-width: ($hand-start - 1px)) { @content; }
+    }
+    @else {}
+  }
+
+  // custom breakpoints
+  @else {
+    @media only screen and ($media-query) { @content; }
+  }
+}
+@include media('lap-up'){
+  .below-lap-only {
+    display: none;
+  }
+}

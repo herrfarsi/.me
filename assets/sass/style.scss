@@ -1,0 +1,41 @@
+@import
+  "base/normalize",
+  "base/variables",
+  "base/media",
+  "base/mixins",
+  "base/typography";
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html {
+  line-height: 1.4;
+  font-size: 16px;
+  font-weight: 400;
+  font-feature-settings:"kern" 1;
+}
+body {
+  margin: 0;
+  padding: 0 0;
+  font-family: $font;
+  font-size: 0.875rem;
+}
+@include media('wall-up'){
+  body {
+    font-size: 1rem;
+  }
+}
+
+@import "blocks/*";
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, .subheader {
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
