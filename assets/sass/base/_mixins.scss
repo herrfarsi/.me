@@ -10,14 +10,3 @@
     clear: both;
   }
 }
-@mixin line(){
-  width: 4000px;
-  margin-left: -2000px;
-  height: 1px;
-  background: $me;
-  opacity: 0.25;
-  transform: rotate(-45deg);
-  transform-origin: 50% 50%;
-  position: fixed;
-  z-index: -1;
-}

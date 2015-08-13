@@ -1,22 +1,11 @@
 .Me {
-  min-height: calc(100vh);
+  min-height: 100vh;
   transition: padding 0.25s ease-in-out;
   padding: 15px;
   overflow: hidden;
 }
 .Me-col {
   padding: 15px;
-}
-.Me-col-line {
-  @include line;
-}
-@for $item from 1 through 5{
-  .Me-col:nth-child(#{$item}){
-    .Me-col-line {
-      opacity: 0.15*$item;
-      height: #{$item}px;
-    }
-  }
 }
 @include media('lap-wide-up'){
   .Me {
@@ -26,20 +15,11 @@
   .Me-col {
     padding: 50px;
     display: flex;
-    flex: 1 0;
     flex-direction: column;
     align-items: flex-start;
+    width: 33.33%;
     &:last-child {
       justify-content: flex-end;
     }
-  }
-  .Me-col--introduction {
-    flex-grow: 1.5;
-  }
-  .Me-col--information {
-    flex-grow: 1.5;
-  }
-  .Me-col--individual {
-    flex-grow: 1;
   }
 }

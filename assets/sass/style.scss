@@ -22,6 +22,7 @@ body {
   padding: 0 0;
   font-family: $font;
   font-size: 0.875rem;
+  color: $me;
 }
 @include media('wall-up'){
   body {

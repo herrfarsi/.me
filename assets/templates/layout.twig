@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>Daniel Farsi — Designer & Coder</title>
     <meta name="description" content="A dedicated graphic designer with a cutting edge front-end toolbox that likes to wander off into unknown territory to find the right solutions." />
-    <script>
-      {% include "../../public_html/assets/js/scripts.min.js" %}
-    </script>
-    <style>
-      {% include "../../public_html/assets/css/style.min.css" %}
-    </style>
+    {% if data.dev == true %}
+      <script src="assets/js/scripts.min.js"></script>
+      <link rel="stylesheet" href="assets/css/style.min.css">
+    {% else %}
+      <script>
+        {% include "../../public_html/assets/js/scripts.min.js" %}
+      </script>
+      <style>
+        {% include "../../public_html/assets/css/style.min.css" %}
+      </style>
+    {% endif %}
     <noscript>
       <link href='http://fonts.googleapis.com/css?family=Work+Sans:400, 900' rel='stylesheet' type='text/css'>
     </noscript>
   </head>
   <body>
-    <section class="Main">
-      {% block page %}{% endblock %}
-    </section>
+    {% block page %}{% endblock %}
     <div class="Loader">
       <div class="Loader-symbol"></div>
     </div>

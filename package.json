@@ -1,12 +1,11 @@
 {
-  "name": "Gocraft",
+  "name": "Herr Farsi",
   "version": "0.0.1",
-  "description": "Gocraft",
+  "description": "Herr Farsi",
   "main": "gulpfile.js",
   "devDependencies": {
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "2.3.1",
-    "gulp-buster": "^1.0.0",
     "gulp-livereload": "^3.8.0",
     "gulp-concat": "^2.5.2",
     "gulp-imagemin": "^2.2.1",
@@ -25,7 +24,6 @@
   "scripts": {
     "clear": "rm -fr public_html/assets/js && rm -fr public_html/css",
     "watch": "./node_modules/gulp/bin/gulp.js default",
-    "compile": "npm run clear && ./node_modules/gulp/bin/gulp.js sass scripts modules",
-    "assets-staging": "npm run compile && rsync -avz public_html/assets/css/ root@goodold.net:/mnt/persist/www/strossle-staging.goodold.net/public_html/assets/css/ && rsync -avz public_html/assets/js/ root@goodold.net:/mnt/persist/www/strossle-staging.goodold.net/public_html/assets/js/ && rsync -avz public_html/assets/busters.json root@goodold.net:/mnt/persist/www/strossle-staging.goodold.net/public_html/assets/busters.json"
+    "compile": "npm run clear && ./node_modules/gulp/bin/gulp.js sass scripts modules"
   }
 }

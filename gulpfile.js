@@ -20,13 +20,12 @@ gulp.task('default', function () {
   // file can be properly rebult
   sassTask();
   scriptsTask();
-  modulesTask();
 
   gulp.watch('assets/templates/**/*.twig', ['twig']);
   gulp.watch('assets/sass/**/*.scss', ['sass']);
-  gulp.watch('assets/images/**/*', ['images']);
+  gulp.watch('assets/img/**/*', ['images']);
   gulp.watch('public_html/assets/css/*.css').on('change', reload);
-  gulp.watch('assets/js/**/*.js', ['lint', 'modules', 'scripts']).on('change', reload);
+  gulp.watch('assets/js/**/*.js', ['lint', 'scripts']).on('change', reload);
 });
 
 var sassTask = function() {
@@ -36,31 +35,29 @@ var sassTask = function() {
       extensions: ['.scss']
   }))
   .pipe($.sass())
-    .on('error', handleError)
-    .pipe($.autoprefixer())
-    .pipe($.rename({ suffix: '.min' }))
-    .pipe($.minifyCss())
-    .pipe(gulp.dest('assets/css', { cwd: 'public_html' }))
-    .pipe($.buster())
-    .pipe(gulp.dest('assets', { cwd: 'public_html' }))
-}
-
-// Twig
-gulp.task('twig', function () {
-  'use strict';
-  return gulp.src('assets/templates/*.twig')
   .on('error', handleError)
-  .pipe($.twig({
-    data: {
-      title: 'Herr Farsi'
-    }
-  }))
-  .pipe(gulp.dest('public_html')).pipe(reload({stream: true}));
-});
-   
+  .pipe($.autoprefixer())
+  .pipe($.rename({ suffix: '.min' }))
+  .pipe($.minifyCss())
+  .pipe(gulp.dest('assets/css', { cwd: 'public_html' }))
+}
 // Sass
 gulp.task('sass', sassTask);
 
+// Twig
+var twigTask = function(){
+  return gulp.src('assets/templates/*.twig')
+  .pipe($.twig({
+    data: {
+      dev: false
+    }
+  }))
+  .pipe(gulp.dest('public_html')).pipe(reload({stream: true}));
+}
+gulp.task('twig', function () {
+  twigTask();
+});
+   
 // Script linting
 gulp.task('lint', function () {
   return gulp.src('assets/js/*.js')
@@ -79,19 +76,6 @@ gulp.task('lint', function () {
   }));
 });
 
-var modulesTask = function() {
-  return gulp.src('assets/js/modules/*.js')
-    .pipe(gulp.dest('public_html/assets/js'))
-    .pipe($.rename({ suffix: '.min' }))
-    .pipe($.uglify())
-    .pipe(gulp.dest('assets/js', { cwd: 'public_html' }))
-    .pipe($.buster())
-    .pipe(gulp.dest('assets', { cwd: 'public_html' }));
-}
-
-// Module scripts concat and uglify
-gulp.task('modules', modulesTask);
-
 var scriptsTask = function() {
   return gulp.src([
     'assets/js/vendor/*.js',
@@ -103,10 +87,7 @@ var scriptsTask = function() {
   .pipe($.uglify())
   .on('error', handleError)
   .pipe(gulp.dest('assets/js', { cwd: 'public_html' }))
-  .pipe($.buster())
-  .pipe(gulp.dest('assets', { cwd: 'public_html' }))
 }
-
 // Script concat and uglify
 gulp.task('scripts', scriptsTask);
 
