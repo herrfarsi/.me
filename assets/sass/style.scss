@@ -24,6 +24,20 @@ body {
   font-size: 0.875rem;
   color: $me;
 }
+@include media('lap-wide-up'){
+  body {
+    &:before {
+      content: "";
+      display: block;
+      border: 40px solid white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
 @include media('wall-up'){
   body {
     font-size: 1rem;
