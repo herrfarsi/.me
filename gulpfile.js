@@ -49,7 +49,7 @@ var twigTask = function(){
   return gulp.src('assets/templates/*.twig')
   .pipe($.twig({
     data: {
-      dev: false
+      dev: true
     }
   }))
   .pipe(gulp.dest('public_html')).pipe(reload({stream: true}));

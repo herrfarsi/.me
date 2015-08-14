@@ -17,9 +17,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 33.33%;
+    width: 38%;
     &:last-child {
       justify-content: flex-end;
     }
+  }
+  .Me-col--individual {
+    width: 24%;
   }
 }

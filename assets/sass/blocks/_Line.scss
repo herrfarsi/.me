@@ -9,39 +9,10 @@
   position: fixed;
   z-index: -1;
 }
-@for $item from 1 through 5{
+@for $item from 1 through 3 {
   .Me-col:nth-child(#{$item}){
     .Line {
-      opacity: 0.15*$item;
-      height: #{$item}px;
-      animation: line-traveler 15s infinite;
-      animation-delay: #{5*$item}s;
+      height: #{$item*2}px;
     }
-  }
-}
-@keyframes line-traveler {
-  0%   {
-    transform: rotate(-45deg) translate3d(0px, 0px, 0px);
-  }
-  10% {
-    transform: rotate(-45deg) translate3d(8px, -6px, 2px);
-  }
-  11% {
-    transform: rotate(-45deg) translate3d(-6px, -8px, 0px);
-  }
-  12% {
-    transform: rotate(-45deg) translate3d(-5px, 0px, 3px);
-  }
-  13% {
-    transform: rotate(-45deg) translate3d(2px, 3px, 2px);
-  }
-  13% {
-    transform: rotate(-45deg) translate3d(5px, -1px, 3px);
-  }
-  15%   {
-    transform: rotate(-45deg) translate3d(0px, 0px, 0px);
-  }
-  100%   {
-    transform: rotate(-45deg) translate3d(0px, 0px, 0px);
   }
 }
