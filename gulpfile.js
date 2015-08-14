@@ -15,12 +15,6 @@ gulp.task('default', function () {
     server: "./public_html",
     notify: false
   });
-
-  // We need to explicitly run these task so that the busters
-  // file can be properly rebult
-  sassTask();
-  scriptsTask();
-
   gulp.watch('assets/templates/**/*.twig', ['twig']);
   gulp.watch('assets/sass/**/*.scss', ['sass']);
   gulp.watch('assets/img/**/*', ['images']);
@@ -31,7 +25,6 @@ gulp.task('default', function () {
 var sassTask = function() {
   return gulp.src('assets/sass/**/*.scss')
   .pipe($.cssGlobbing({
-      // Configure it to use SCSS files
       extensions: ['.scss']
   }))
   .pipe($.sass())
@@ -46,12 +39,11 @@ gulp.task('sass', sassTask);
 
 // Twig
 var twigTask = function(){
-  return gulp.src('assets/templates/*.twig')
-  .pipe($.twig({
-    data: {
-      dev: true
-    }
-  }))
+  return gulp.src([
+    '!assets/templates/layout.twig',
+    'assets/templates/*.twig'
+  ])
+  .pipe($.twig())
   .pipe(gulp.dest('public_html')).pipe(reload({stream: true}));
 }
 gulp.task('twig', function () {

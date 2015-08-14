@@ -27,7 +27,7 @@ a {
   color: white;
   display: inline-block;
   text-decoration: none;
-  padding: 2px 5px;
+  padding: 9px 12px;
   margin-bottom: 2px;
   &:hover {
     background: $extreme;
@@ -37,13 +37,11 @@ ul {
   @include reset-ul;
   margin: 0.75rem 0;
 }
-@include media('below-lap'){
-  a {
-    padding: 9px 12px;
-  }
-}
 @include media('lap-up'){
   h1 {
     font-size: 10vh;
+  }
+  a {
+    padding: 2px 5px;
   }
 }
