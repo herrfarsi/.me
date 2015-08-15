@@ -26,15 +26,20 @@ body {
 }
 @include media('lap-wide-up'){
   body {
-    &:before {
+    &:before, &:after {
       content: "";
       display: block;
-      border: 40px solid white;
       position: absolute;
       top: 0;
       right: 0;
-      bottom: 0;
       left: 0;
+      height: 40px;
+      z-index: 0;
+      background: white;
+    }
+    &:after {
+      top: auto;
+      bottom: 0;
     }
   }
 }
