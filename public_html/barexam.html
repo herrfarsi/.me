@@ -7,11 +7,19 @@
     <title>Daniel Farsi — Designer & Coder</title>
     <meta name="description" content="A dedicated interactive / digital / web designer that code." />
     <meta property="og:image" content="http://barbal.se/assets/img/meta.jpg" />
-    {% block scripts %}{% endblock %}
+    <script src="assets/js/scripts.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.min.css">
   </head>
   <body>
-    {% block page %}{% endblock %}
+    <div class="Diagram">
+  <div class="Diagram-label">Chance of fuckin' up</div>
+  <div class="Diagram-bar Diagram-bar--stripes Diagram-bar--1of10">
+    <div class="Diagram-bar-label">By yourself</div>
+  </div>
+  <div class="Diagram-bar Diagram-bar--solid Diagram-bar--10of10">
+    <div class="Diagram-bar-label">When everybody is watching</div>
+  </div>
+</div>
     <div class="Loader">
       <div class="Loader-symbol"></div>
     </div>
@@ -19,18 +27,15 @@
     <script>
       WebFont.load({
         google: {
-          families: ['Work Sans:400,700,900']
+          families: ['Work Sans:400,900']
         },
         timeout: 5000,
         classes: false,
-        active: hideLoader,
-        inactive: hideLoader
+        active: showPage,
+        inactive: showPage
       });
-      function hideLoader(){
+      function showPage(){
         Velocity(document.querySelectorAll('.Loader'), { opacity: [0, 1] }, { duration: 1000, display: 'none' });
-        if (typeof init == 'function') {
-          init();
-        }
       }
     </script>
   </body>

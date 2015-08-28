@@ -18,7 +18,7 @@ gulp.task('default', function () {
   gulp.watch('assets/templates/**/*.twig', ['twig']);
   gulp.watch('assets/sass/**/*.scss', ['sass']);
   gulp.watch('assets/img/**/*', ['images']);
-  gulp.watch('public_html/assets/css/*.css').on('change', reload);
+  //gulp.watch('public_html/assets/css/*.css').on('change', reload);
   gulp.watch('assets/js/**/*.js', ['lint', 'scripts']).on('change', reload);
 });
 
@@ -33,6 +33,7 @@ var sassTask = function() {
   .pipe($.rename({ suffix: '.min' }))
   .pipe($.minifyCss())
   .pipe(gulp.dest('assets/css', { cwd: 'public_html' }))
+  .pipe(reload({stream: true}))
 }
 // Sass
 gulp.task('sass', sassTask);

@@ -1,0 +1,13 @@
+// For Google Chrome
+::-webkit-scrollbar {
+    width:  10px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+}
